@@ -1,3 +1,6 @@
+-- IF SOMEBODY. LOOKING THIS CODE. YOU WILL BE GONE.
+-- By XD23C1 github
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
