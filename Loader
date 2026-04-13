@@ -475,40 +475,33 @@ TabVisual:CreateSlider({
 })
 
 -- Main Tab
-TabMain:CreateToggle({Name = "aimbot (hold mb2)", CurrentValue = false, Callback = function(v) AimEnabled = v end})
-TabMain:CreateSlider({Name = "aimbot fov", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
-TabMain:CreateToggle({Name = "walk check", CurrentValue = true, Callback = function(v) WallCheck = v end})
-TabMain:CreateToggle({Name = "team check", CurrentValue = false, Callback = function(v) TeamCheck = v end})
-TabMain:CreateToggle({Name = "alive check", CurrentValue = true, Callback = function(v) AliveCheck = v end})
-TabMain:CreateSlider({Name = "how smooth aimbot", Range = {0.10, 0.40}, CurrentValue = 0.22, Increment = 0.01, Callback = function(v) Smoothing = v end})
-
-TabMain:CreateDropdown({
-    Name = "aimbot target part",
-    Options = AimbotLimbs,
-    CurrentOption = "Head",
-    Callback = function(v)
-        AimPart = v
-    end
-})
-
-TabMain:CreateToggle({Name = "triggerbot (mouse target)", CurrentValue = false, Callback = function(v) 
-    TriggerbotEnabled = v 
-end})
+TabMain:CreateToggle({Name = "aimbot (hold mb2)", Flag = "AimbotToggle", CurrentValue = false, Callback = function(v) AimEnabled = v end})
+TabMain:CreateSlider({Name = "aimbot fov", Flag = "AimbotFOV", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
+TabMain:CreateToggle({Name = "walk check", Flag = "WallCheck", CurrentValue = true, Callback = function(v) WallCheck = v end})
+TabMain:CreateToggle({Name = "team check", Flag = "TeamCheck", CurrentValue = false, Callback = function(v) TeamCheck = v end})
+TabMain:CreateToggle({Name = "alive check", Flag = "AliveCheck", CurrentValue = true, Callback = function(v) AliveCheck = v end})
+TabMain:CreateSlider({Name = "how smooth aimbot", Flag = "Smoothing", Range = {0.10, 0.40}, CurrentValue = 0.22, Increment = 0.01, Callback = function(v) Smoothing = v end})
+TabMain:CreateDropdown({Name = "aimbot target part", Flag = "AimPart", Options = AimbotLimbs, CurrentOption = "Head", Callback = function(v) AimPart = v end})
+TabMain:CreateToggle({Name = "triggerbot (mouse target)", Flag = "TriggerbotToggle", CurrentValue = false, Callback = function(v) TriggerbotEnabled = v end})
 
 -- Visuals Tab
-TabVisual:CreateToggle({Name = "lgbt rgb (rainbow)", CurrentValue = true, Callback = function(v) getgenv().RainbowEnabled = v end})
-TabVisual:CreateSlider({Name = "lgbt speed (less mean slower)", Range = {0.1, 3}, CurrentValue = 0.6, Increment = 0.05, Callback = function(v) getgenv().RainbowSpeed = v end})
-TabVisual:CreateToggle({Name = "chams", CurrentValue = false, Callback = function(v) getgenv().ChamsEnabled = v end})
-TabVisual:CreateToggle({Name = "skeleton", CurrentValue = false, Callback = function(v) getgenv().SkeletonEnabled = v end})
-TabVisual:CreateToggle({Name = "tracers", CurrentValue = false, Callback = function(v) getgenv().ESPEnabled = v end})
-TabVisual:CreateToggle({Name = "lgbt circle", CurrentValue = false, Callback = function(v) FOVRainbow = v end})
-TabVisual:CreateColorPicker({
-    Name = "circle color",
-    Color = Color3.fromRGB(0, 255, 150),
-    Callback = function(v)
-        FOVCircleColor = v
+TabVisual:CreateToggle({Name = "lgbt rgb (rainbow)", Flag = "RainbowEnabled", CurrentValue = true, Callback = function(v) getgenv().RainbowEnabled = v end})
+TabVisual:CreateSlider({Name = "lgbt speed (less mean slower)", Flag = "RainbowSpeed", Range = {0.1, 3}, CurrentValue = 0.6, Increment = 0.05, Callback = function(v) getgenv().RainbowSpeed = v end})
+TabVisual:CreateToggle({Name = "chams", Flag = "ChamsEnabled", CurrentValue = false, Callback = function(v) getgenv().ChamsEnabled = v end})
+TabVisual:CreateToggle({Name = "skeleton", Flag = "SkeletonEnabled", CurrentValue = false, Callback = function(v) getgenv().SkeletonEnabled = v end})
+TabVisual:CreateToggle({Name = "tracers", Flag = "ESPEnabled", CurrentValue = false, Callback = function(v) getgenv().ESPEnabled = v end})
+TabVisual:CreateToggle({Name = "lgbt circle", Flag = "FOVRainbow", CurrentValue = false, Callback = function(v) FOVRainbow = v end})
+TabVisual:CreateColorPicker({Name = "circle color", Flag = "FOVCircleColor", Color = Color3.fromRGB(255, 255, 225), Callback = function(v) FOVCircleColor = v end})
+TabVisual:CreateSlider({Name = "camera field of view (fixed)", Flag = "CameraFOV", Range = {60, 120}, CurrentValue = Camera.FieldOfView, Increment = 1, Callback = function(v)
+    SetProtectedFOV(v)
+end})
+
+TabVisual:CreateToggle({Name = "fov protect (antireset)", Flag = "FOVProtection", CurrentValue = true, Callback = function(v)
+    FOVProtectionEnabled = v
+    if v then
+        SetProtectedFOV(DesiredFOV)
     end
-})
+end})
 
 -- Movement Tab
 TabMovement:CreateToggle({
@@ -560,7 +553,7 @@ TabMovement:CreateSlider({
 })
 
 -- Misc Tab
-TabMisc:CreateToggle({Name = "fullbright (flashback)", CurrentValue = false, Callback = function(v)
+TabMisc:CreateToggle({Name = "fullbright (flashback)", Flag = "FullbrightEnabled", CurrentValue = false, Callback = function(v)
     if v then
         game.Lighting.Brightness = 2
         game.Lighting.ClockTime = 14
@@ -580,15 +573,6 @@ TabMisc:CreateToggle({Name = "fullbright (flashback)", CurrentValue = false, Cal
     end
 end})
 
-TabMisc:CreateSlider({
-    Name = "camera field of view (fixed)", 
-    Range = {60, 120}, 
-    CurrentValue = Camera.FieldOfView, 
-    Increment = 1, 
-    Callback = function(v)
-        SetProtectedFOV(v)
-    end
-})
 
 TabMisc:CreateButton({
     Name = "funny tool :3 (JERK OFF)",
@@ -674,17 +658,6 @@ TabMisc:CreateButton({
     end
 })
 
-TabMisc:CreateToggle({
-    Name = "fov protect (antireset)",
-    CurrentValue = true,
-    Callback = function(v)
-        FOVProtectionEnabled = v
-        if v then
-            SetProtectedFOV(DesiredFOV)
-        end
-    end
-})
-
 TabMisc:CreateButton({Name = "support link pls", Callback = function()
     setclipboard(supportlink)
     Rayfield:Notify({
@@ -700,6 +673,9 @@ TabMisc:CreateButton({Name = "rejoin", Callback = function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
 end})
 
+-- =============================================
+-- НОВЫЙ ТРИГГЕРБОТ (полностью заменён на твой из triggerbot.txt)
+-- =============================================
 RunService.RenderStepped:Connect(function()
     if not TriggerbotEnabled then return end
 
@@ -757,6 +733,7 @@ RunService.RenderStepped:Connect(function()
         mouse1release()
     end
 end)
+-- ==================== CROSSHAIR DRAWING (в конце) ====================
 settings = {
     color = Color3.fromRGB(255, 255/2, 255),
     thickness = 2,
@@ -830,13 +807,14 @@ if settings.recenter then
     end)
 end
 
-AimEnabled = false
-TriggerbotEnabled = false
-WalkSpeedEnabled = false
-JumpPowerEnabled = false
-getgenv().ChamsEnabled = false
-getgenv().SkeletonEnabled = false
-getgenv().ESPEnabled = false
-FOVRainbow = false
-CrosshairSettings.Rainbow = false
-FOVProtectionEnabled = true
+--[ AimEnabled = false
+--TriggerbotEnabled = false
+--WalkSpeedEnabled = false
+--JumpPowerEnabled = false
+--getgenv().ChamsEnabled = false
+--getgenv().SkeletonEnabled = false
+--g--etgenv().ESPEnabled = false
+--FOVRainbow = false
+--CrosshairSettings.Rainbow = false
+--FOVProtectionEnabled = true
+
