@@ -1,8 +1,8 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-    Name = "larp script",
-    LoadingTitle = "Remember: LARP",
+    Name = "LarpNality % FemboyNality",
+    LoadingTitle = "RVVZ gandon",
     LoadingSubtitle = "I'm legit 100%",
     ConfigurationSaving = {
         Enabled = true,
@@ -474,7 +474,6 @@ TabVisual:CreateSlider({
     end
 })
 
--- Main Tab
 TabMain:CreateToggle({Name = "aimbot (hold mb2)", Flag = "AimbotToggle", CurrentValue = false, Callback = function(v) AimEnabled = v end})
 TabMain:CreateSlider({Name = "aimbot fov", Flag = "AimbotFOV", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
 TabMain:CreateToggle({Name = "walk check", Flag = "WallCheck", CurrentValue = true, Callback = function(v) WallCheck = v end})
@@ -484,7 +483,6 @@ TabMain:CreateSlider({Name = "how smooth aimbot", Flag = "Smoothing", Range = {0
 TabMain:CreateDropdown({Name = "aimbot target part", Flag = "AimPart", Options = AimbotLimbs, CurrentOption = "Head", Callback = function(v) AimPart = v end})
 TabMain:CreateToggle({Name = "triggerbot (mouse target)", Flag = "TriggerbotToggle", CurrentValue = false, Callback = function(v) TriggerbotEnabled = v end})
 
--- Visuals Tab
 TabVisual:CreateToggle({Name = "lgbt rgb (rainbow)", Flag = "RainbowEnabled", CurrentValue = true, Callback = function(v) getgenv().RainbowEnabled = v end})
 TabVisual:CreateSlider({Name = "lgbt speed (less mean slower)", Flag = "RainbowSpeed", Range = {0.1, 3}, CurrentValue = 0.6, Increment = 0.05, Callback = function(v) getgenv().RainbowSpeed = v end})
 TabVisual:CreateToggle({Name = "chams", Flag = "ChamsEnabled", CurrentValue = false, Callback = function(v) getgenv().ChamsEnabled = v end})
@@ -673,16 +671,12 @@ TabMisc:CreateButton({Name = "rejoin", Callback = function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
 end})
 
--- =============================================
--- НОВЫЙ ТРИГГЕРБОТ (полностью заменён на твой из triggerbot.txt)
--- =============================================
 RunService.RenderStepped:Connect(function()
     if not TriggerbotEnabled then return end
 
     local target = mouse.Target
     if not target then return end
 
-    -- Поднимаемся вверх по иерархии до настоящего Character
     local character = target:FindFirstAncestorWhichIsA("Model") 
                      or target.Parent
     
@@ -713,7 +707,6 @@ RunService.RenderStepped:Connect(function()
         doShoot = false
     end
 
-    -- FOV check
     if doShoot then
         local mousePos = UserInputService:GetMouseLocation()
         local screenPos, onScreen = Camera:WorldToViewportPoint(character.HumanoidRootPart.Position)
@@ -733,7 +726,7 @@ RunService.RenderStepped:Connect(function()
         mouse1release()
     end
 end)
--- ==================== CROSSHAIR DRAWING (в конце) ====================
+
 settings = {
     color = Color3.fromRGB(255, 255/2, 255),
     thickness = 2,
