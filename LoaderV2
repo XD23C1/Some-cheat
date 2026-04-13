@@ -1,5 +1,224 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+-- ========== СИСТЕМА СОХРАНЕНИЯ КОНФИГОВ ==========
+local ConfigService = {
+    Configs = {},
+    CurrentConfig = "default",
+    ConfigFolder = "LarpNalityConfig",
+    ConfigFileName = "LarpNality_Settings"
+}
+
+-- Стандартные настройки по умолчанию
+local DefaultSettings = {
+    -- Combat
+    AimEnabled = false,
+    FOVRadius =180,
+    WallCheck = true,
+    TeamCheck = false,
+    AliveCheck = true,
+    Smoothing = 0.22,
+    AimPart = "Head",
+    TriggerbotEnabled = false,
+    
+    -- Visuals
+    RainbowEnabled = true,
+    RainbowSpeed = 0.6,
+    ChamsEnabled = false,
+    SkeletonEnabled = false,
+    ESPEnabled = false,
+    FOVRainbow = false,
+    FOVCircleColor = {R = 0, G = 255, B = 150},
+    
+    -- Crosshair
+    CrosshairEnabled = true,
+    CrosshairRainbow = false,
+    CrosshairThickness = 2,
+    CrosshairLength = 8,
+    CrosshairOpacity = 1,
+    CrosshairColor = {R = 255, G = 255, B = 255},
+    
+    -- Movement
+    WalkSpeedEnabled = false,
+    WalkSpeedValue = 32,
+    JumpPowerEnabled = false,
+    JumpPowerValue = 100,
+    
+    -- Misc
+    FullBrightEnabled = false,
+    FOVProtectionEnabled = true,
+    DesiredFOV = 70,
+    
+    -- Whitelist
+    WhitelistEnabled = false,
+    WhitelistPlayers = {}
+}
+
+-- Загрузка конфига
+function ConfigService:LoadConfig(configName)
+    local success, data = pcall(function()
+        return readfile(self.ConfigFolder .. "/" .. self.ConfigFileName .. "_" .. configName .. ".json")
+    end)
+    
+    if success and data then
+        local settings = game:GetService("HttpService"):JSONDecode(data)
+        for key, value in pairs(settings) do
+            DefaultSettings[key] = value
+        end
+        self.CurrentConfig = configName
+        return true
+    end
+    return false
+end
+
+-- Сохранение конфига
+function ConfigService:SaveConfig(configName)
+    local settingsToSave = {}
+    for key, value in pairs(DefaultSettings) do
+        settingsToSave[key] = value
+    end
+    
+    settingsToSave.AimEnabled = AimEnabled
+    settingsToSave.FOVRadius = FOVRadius
+    settingsToSave.WallCheck = WallCheck
+    settingsToSave.TeamCheck = TeamCheck
+    settingsToSave.AliveCheck = AliveCheck
+    settingsToSave.Smoothing = Smoothing
+    settingsToSave.AimPart = AimPart
+    settingsToSave.TriggerbotEnabled = TriggerbotEnabled
+    
+    settingsToSave.RainbowEnabled = getgenv().RainbowEnabled
+    settingsToSave.RainbowSpeed = getgenv().RainbowSpeed
+    settingsToSave.ChamsEnabled = getgenv().ChamsEnabled
+    settingsToSave.SkeletonEnabled = getgenv().SkeletonEnabled
+    settingsToSave.ESPEnabled = getgenv().ESPEnabled
+    settingsToSave.FOVRainbow = FOVRainbow
+    settingsToSave.FOVCircleColor = {R = FOVCircleColor.R * 255, G = FOVCircleColor.G * 255, B = FOVCircleColor.B * 255}
+    
+    settingsToSave.CrosshairEnabled = getgenv().crosshair_x and getgenv().crosshair_x["Line"] and getgenv().crosshair_x["Line"].Visible or true
+    settingsToSave.CrosshairRainbow = CrosshairSettings.Rainbow
+    settingsToSave.CrosshairThickness = CrosshairSettings.Thickness
+    settingsToSave.CrosshairLength = CrosshairSettings.Length
+    settingsToSave.CrosshairOpacity = CrosshairSettings.Opacity
+    settingsToSave.CrosshairColor = {R = CrosshairSettings.Color.R * 255, G = CrosshairSettings.Color.G * 255, B = CrosshairSettings.Color.B * 255}
+    
+    settingsToSave.WalkSpeedEnabled = WalkSpeedEnabled
+    settingsToSave.WalkSpeedValue = DesiredWalkSpeed
+    settingsToSave.JumpPowerEnabled = JumpPowerEnabled
+    settingsToSave.JumpPowerValue = DesiredJumpPower
+    
+    settingsToSave.FullBrightEnabled = FullBrightEnabled
+    settingsToSave.FOVProtectionEnabled = FOVProtectionEnabled
+    settingsToSave.DesiredFOV = DesiredFOV
+    
+    settingsToSave.WhitelistEnabled = WhitelistEnabled
+    settingsToSave.WhitelistPlayers = WhitelistPlayers
+    
+    local encoded = game:GetService("HttpService"):JSONEncode(settingsToSave)
+    local success, err = pcall(function()
+        if not isfolder(self.ConfigFolder) then
+            makefolder(self.ConfigFolder)
+        end
+        writefile(self.ConfigFolder .. "/" .. self.ConfigFileName .. "_" .. configName .. ".json", encoded)
+    end)
+    
+    return success
+end
+
+-- Применение загруженных настроек
+function ConfigService:ApplySettings()
+    AimEnabled = DefaultSettings.AimEnabled
+    FOVRadius = DefaultSettings.FOVRadius
+    WallCheck = DefaultSettings.WallCheck
+    TeamCheck = DefaultSettings.TeamCheck
+    AliveCheck = DefaultSettings.AliveCheck
+    Smoothing = DefaultSettings.Smoothing
+    AimPart = DefaultSettings.AimPart
+    TriggerbotEnabled = DefaultSettings.TriggerbotEnabled
+    
+    getgenv().RainbowEnabled = DefaultSettings.RainbowEnabled
+    getgenv().RainbowSpeed = DefaultSettings.RainbowSpeed
+    getgenv().ChamsEnabled = DefaultSettings.ChamsEnabled
+    getgenv().SkeletonEnabled = DefaultSettings.SkeletonEnabled
+    getgenv().ESPEnabled = DefaultSettings.ESPEnabled
+    FOVRainbow = DefaultSettings.FOVRainbow
+    FOVCircleColor = Color3.fromRGB(DefaultSettings.FOVCircleColor.R, DefaultSettings.FOVCircleColor.G, DefaultSettings.FOVCircleColor.B)
+    
+    if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"].Visible = DefaultSettings.CrosshairEnabled
+        getgenv().crosshair_y["Line"].Visible = DefaultSettings.CrosshairEnabled
+    end
+    CrosshairSettings.Rainbow = DefaultSettings.CrosshairRainbow
+    CrosshairSettings.Thickness = DefaultSettings.CrosshairThickness
+    CrosshairSettings.Length = DefaultSettings.CrosshairLength
+    CrosshairSettings.Opacity = DefaultSettings.CrosshairOpacity
+    CrosshairSettings.Color = Color3.fromRGB(DefaultSettings.CrosshairColor.R, DefaultSettings.CrosshairColor.G, DefaultSettings.CrosshairColor.B)
+    UpdateCrosshairStyle()
+    UpdateCrosshairPosition()
+    UpdateCrosshairColor()
+    
+    WalkSpeedEnabled = DefaultSettings.WalkSpeedEnabled
+    DesiredWalkSpeed = DefaultSettings.WalkSpeedValue
+    JumpPowerEnabled = DefaultSettings.JumpPowerEnabled
+    DesiredJumpPower = DefaultSettings.JumpPowerValue
+    if WalkSpeedEnabled then SetWalkSpeed(DesiredWalkSpeed) end
+    if JumpPowerEnabled then SetJumpPower(DesiredJumpPower) end
+    
+    SetFullBright(DefaultSettings.FullBrightEnabled)
+    FOVProtectionEnabled = DefaultSettings.FOVProtectionEnabled
+    SetProtectedFOV(DefaultSettings.DesiredFOV)
+    
+    WhitelistEnabled = DefaultSettings.WhitelistEnabled
+    WhitelistPlayers = DefaultSettings.WhitelistPlayers or {}
+    if WhitelistTextBox then
+        WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+    end
+end
+
+-- Список сохраненных конфигов
+function ConfigService:GetConfigList()
+    local configs = {"default"}
+    if isfolder(self.ConfigFolder) then
+        local files = listfiles(self.ConfigFolder)
+        for _, file in ipairs(files) do
+            local name = string.match(file, self.ConfigFileName .. "_(.+)%.json")
+            if name and name ~= "default" then
+                table.insert(configs, name)
+            end
+        end
+    end
+    return configs
+end
+
+-- ========== WHITELIST СИСТЕМА ==========
+local WhitelistEnabled = false
+local WhitelistPlayers = {} -- таблица с именами игроков в whitelist
+
+-- Функция проверки в whitelist
+local function IsWhitelisted(player)
+    if not WhitelistEnabled then return false end
+    if not player then return false end
+    for _, name in ipairs(WhitelistPlayers) do
+        if string.lower(player.Name) == string.lower(name) or string.lower(player.DisplayName) == string.lower(name) then
+            return true
+        end
+    end
+    return false
+end
+
+-- Функция обновления whitelist из текста
+local function UpdateWhitelistFromText(text)
+    WhitelistPlayers = {}
+    if text and text ~= "" then
+        for _, name in ipairs(string.split(text, ",")) do
+            local trimmed = string.gsub(name, "^%s*(.-)%s*$", "%1")
+            if trimmed ~= "" then
+                table.insert(WhitelistPlayers, trimmed)
+            end
+        end
+    end
+end
+
+-- ========== СОЗДАНИЕ ВКЛАДОК ==========
 local Window = Rayfield:CreateWindow({
     Name = "larp script",
     LoadingTitle = "Remember: LARP",
@@ -17,7 +236,9 @@ local TabVisual = Window:CreateTab("visuals (client)", 4483362458)
 local TabMisc = Window:CreateTab("miscs", 4483362458)
 local TabMovement = Window:CreateTab("character things", 4483362458)
 local TabWhitelist = Window:CreateTab("whitelist", 4483362458)
+local TabConfigs = Window:CreateTab("configs", 4483362458)
 
+-- ========== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ==========
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -26,135 +247,10 @@ local LocalPlayer = Players.LocalPlayer
 
 local mouse = LocalPlayer:GetMouse()
 
--- ========== WHITELIST SYSTEM ==========
-local Whitelist = {
-    List = {},
-    Enabled = true
-}
-
--- Функция проверки в белом списке
-local function IsWhitelisted(player)
-    if not Whitelist.Enabled then return false end
-    for _, name in ipairs(Whitelist.List) do
-        if player.Name:lower() == name:lower() then
-            return true
-        end
-    end
-    return false
-end
-
--- Функция для обновления UI списка
-local function UpdateWhitelistUI()
-    if WhitelistList then
-        local text = ""
-        for i, name in ipairs(Whitelist.List) do
-            text = text .. i .. ". " .. name .. "\n"
-        end
-        if text == "" then text = "Empty" end
-        WhitelistList:Set(text)
-    end
-end
-
--- Whitelist Tab UI
-local WhitelistInput = ""
-TabWhitelist:CreateInput({
-    Name = "player name to add",
-    CurrentValue = "",
-    Callback = function(v)
-        WhitelistInput = v
-    end
-})
-
-TabWhitelist:CreateButton({
-    Name = "add to whitelist",
-    Callback = function()
-        if WhitelistInput and WhitelistInput ~= "" then
-            local found = false
-            for _, name in ipairs(Whitelist.List) do
-                if name:lower() == WhitelistInput:lower() then
-                    found = true
-                    break
-                end
-            end
-            if not found then
-                table.insert(Whitelist.List, WhitelistInput)
-                UpdateWhitelistUI()
-                Rayfield:Notify({
-                    Title = "Whitelist",
-                    Content = "Added: " .. WhitelistInput,
-                    Duration = 3
-                })
-            else
-                Rayfield:Notify({
-                    Title = "Whitelist",
-                    Content = "Player already in whitelist",
-                    Duration = 2
-                })
-            end
-        end
-    end
-})
-
-TabWhitelist:CreateInput({
-    Name = "player name to remove",
-    CurrentValue = "",
-    Callback = function(v)
-        WhitelistInput = v
-    end
-})
-
-TabWhitelist:CreateButton({
-    Name = "remove from whitelist",
-    Callback = function()
-        if WhitelistInput and WhitelistInput ~= "" then
-            for i, name in ipairs(Whitelist.List) do
-                if name:lower() == WhitelistInput:lower() then
-                    table.remove(Whitelist.List, i)
-                    UpdateWhitelistUI()
-                    Rayfield:Notify({
-                        Title = "Whitelist",
-                        Content = "Removed: " .. WhitelistInput,
-                        Duration = 3
-                    })
-                    break
-                end
-            end
-        end
-    end
-})
-
-TabWhitelist:CreateButton({
-    Name = "clear whitelist",
-    Callback = function()
-        Whitelist.List = {}
-        UpdateWhitelistUI()
-        Rayfield:Notify({
-            Title = "Whitelist",
-            Content = "Cleared all players",
-            Duration = 3
-        })
-    end
-})
-
-TabWhitelist:CreateToggle({
-    Name = "enable whitelist (ignore aimbot/triggerbot)",
-    CurrentValue = true,
-    Callback = function(v)
-        Whitelist.Enabled = v
-    end
-})
-
--- Текстовое поле для отображения списка
-local WhitelistList = TabWhitelist:CreateParagraph({
-    Name = "Current Whitelist",
-    Content = "Empty"
-})
-UpdateWhitelistUI()
-
--- ========== FOV PROTECTION ==========
 local DesiredFOV = Camera.FieldOfView
 local FOVProtectionEnabled = true
 
+-- FOV Protection
 RunService.RenderStepped:Connect(function()
     if FOVProtectionEnabled and Camera and Camera.FieldOfView ~= DesiredFOV then
         Camera.FieldOfView = DesiredFOV
@@ -168,7 +264,7 @@ local function SetProtectedFOV(value)
     end
 end
 
--- ========== MOVEMENT ==========
+-- Movement
 local WalkSpeedEnabled = false
 local JumpPowerEnabled = false
 local DesiredWalkSpeed = 16
@@ -218,7 +314,7 @@ end)
 
 local supportlink = "https://www.roblox.com/game-pass/1789175771/supportyea"
 
--- ========== RAINBOW ==========
+-- Rainbow
 getgenv().RainbowEnabled = true
 getgenv().RainbowSpeed = 0.6
 
@@ -229,7 +325,7 @@ local function Rainbow(speed)
     return Color3.fromHSV((tick() * speed) % 1, 1, 1)
 end
 
--- ========== AIMBOT ==========
+-- Aimbot variables
 local AimEnabled = false
 local FOVRadius = 180
 local WallCheck = true
@@ -259,9 +355,11 @@ FOVCircle.Visible = false
 
 local TriggerbotEnabled = false
 
--- ========== FULLBRIGHT (PROTECTED) ==========
-local FullBrightEnabled = false
+-- Original Lighting для FullBright
 local OriginalLightingSaved = nil
+
+-- FullBright с защитной петлей
+local FullBrightEnabled = false
 
 local function SetFullBright(enabled)
     FullBrightEnabled = enabled
@@ -305,7 +403,7 @@ task.spawn(function()
     end
 end)
 
--- ========== VISIBILITY CHECK ==========
+-- Visibility check
 local function IsVisible(part)
     if not WallCheck then return true end
     local params = RaycastParams.new()
@@ -315,16 +413,15 @@ local function IsVisible(part)
     return not ray or ray.Instance:IsDescendantOf(part.Parent)
 end
 
--- ========== GET CLOSEST PLAYER (with whitelist) ==========
+-- Get closest player с учетом whitelist
 local function GetClosestPlayer()
     local closest, dist = nil, FOVRadius
     local mousePos = UserInputService:GetMouseLocation()
     
     for _, plr in ipairs(Players:GetPlayers()) do
         if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("Humanoid") then
-            -- WHITELIST CHECK
-            if Whitelist.Enabled and IsWhitelisted(plr) then continue end
-            
+            -- Whitelist check
+            if IsWhitelisted(plr) then continue end
             if AliveCheck and plr.Character.Humanoid.Health <= 0 then continue end
             if TeamCheck and plr.Team == LocalPlayer.Team then continue end
 
@@ -392,7 +489,7 @@ end)
 task.wait(1)
 StartAimbot()
 
--- ========== VISUALS ==========
+-- Visuals
 getgenv().ChamsEnabled = false
 getgenv().SkeletonEnabled = false
 getgenv().ESPEnabled = false
@@ -540,7 +637,7 @@ for _, plr in ipairs(Players:GetPlayers()) do
     CreateESP(plr)
 end
 
--- ========== CROSSHAIR ==========
+-- Crosshair
 CrosshairSettings = {
     Color = Color3.fromRGB(255, 255, 255),
     Rainbow = false,
@@ -584,62 +681,17 @@ local function UpdateCrosshairPosition()
     end
 end
 
--- ========== TRIGGERBOT (with whitelist) ==========
-RunService.RenderStepped:Connect(function()
-    if not TriggerbotEnabled then return end
+-- Crosshair drawing
+settings = {
+    color = Color3.fromRGB(255, 255/2, 255),
+    thickness = 2,
+    length = 8,
+    opacity = 1,
+    x_offset = 0,
+    y_offset = 0,
+    recenter = true
+}
 
-    local target = mouse.Target
-    if not target then return end
-
-    local character = target:FindFirstAncestorWhichIsA("Model") or target.Parent
-    
-    while character and not character:FindFirstChildOfClass("Humanoid") do
-        character = character.Parent
-    end
-
-    if not character or not character:FindFirstChildOfClass("Humanoid") then return end
-
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-    local hitPlayer = Players:GetPlayerFromCharacter(character)
-
-    if humanoid.Health <= 0 or not hitPlayer or hitPlayer == LocalPlayer then return end
-    
-    -- WHITELIST CHECK
-    if Whitelist.Enabled and IsWhitelisted(hitPlayer) then return end
-
-    local doShoot = true
-
-    if AliveCheck and humanoid.Health <= 0 then doShoot = false end
-    if TeamCheck and hitPlayer.Team == LocalPlayer.Team then doShoot = false end
-
-    local checkPart = character:FindFirstChild(AimPart) 
-                   or character:FindFirstChild("Head") 
-                   or character:FindFirstChild("HumanoidRootPart")
-    if WallCheck and checkPart and not IsVisible(checkPart) then
-        doShoot = false
-    end
-
-    if doShoot then
-        local mousePos = UserInputService:GetMouseLocation()
-        local screenPos, onScreen = Camera:WorldToViewportPoint(character.HumanoidRootPart.Position)
-        if onScreen then
-            local dist = (Vector2.new(screenPos.X, screenPos.Y) - mousePos).Magnitude
-            if dist > FOVRadius then
-                doShoot = false
-            end
-        end
-    end
-
-    if doShoot then
-        mouse1press()
-        repeat
-            RunService.RenderStepped:Wait()
-        until not mouse.Target or not (mouse.Target:FindFirstAncestorWhichIsA("Model") or mouse.Target.Parent):FindFirstChildOfClass("Humanoid")
-        mouse1release()
-    end
-end)
-
--- ========== CROSSHAIR DRAWING ==========
 local cam = workspace.CurrentCamera or workspace:FindFirstChildOfClass("Camera")
 
 getgenv().crosshair_x = getgenv().crosshair_x or {}
@@ -674,47 +726,65 @@ if getgenv().crosshair_y ~= nil or getgenv().crosshair_y ~= {} then
 end
 
 getgenv().crosshair_x["Line"] = draw("Line", {
-    To = Vector2.new(((cam.ViewportSize.x / 2) - 0) - CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0),
-    From = Vector2.new(((cam.ViewportSize.x / 2) - 0) + CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0),
-    Thickness = CrosshairSettings.Thickness,
-    Color = CrosshairSettings.Color,
-    Transparency = CrosshairSettings.Opacity,
+    To = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) - settings.length, (cam.ViewportSize.y / 2) - settings.y_offset),
+    From = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) + settings.length, (cam.ViewportSize.y / 2) - settings.y_offset),
+    Thickness = settings.thickness,
+    Color = settings.color,
+    Transparency = settings.opacity,
     Visible = true
 })
 
 getgenv().crosshair_y["Line"] = draw("Line", {
-    To = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) - CrosshairSettings.Length),
-    From = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) + CrosshairSettings.Length),
-    Thickness = CrosshairSettings.Thickness,
-    Color = CrosshairSettings.Color,
-    Transparency = CrosshairSettings.Opacity,
+    To = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) - settings.length),
+    From = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) + settings.length),
+    Thickness = settings.thickness,
+    Color = settings.color,
+    Transparency = settings.opacity,
     Visible = true
 })
 
-getgenv().crosshair_x["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-    getgenv().crosshair_x["Line"]["To"] = Vector2.new(((cam.ViewportSize.x / 2) - 0) - CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0)
-    getgenv().crosshair_x["Line"]["From"] = Vector2.new(((cam.ViewportSize.x / 2) - 0) + CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0)
-end)
+if settings.recenter then
+    getgenv().crosshair_x["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+        getgenv().crosshair_x["Line"]["To"] = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) - settings.length, (cam.ViewportSize.y / 2) - settings.y_offset)
+        getgenv().crosshair_x["Line"]["From"] = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) + settings.length, (cam.ViewportSize.y / 2) - settings.y_offset)
+    end)
 
-getgenv().crosshair_y["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
-    getgenv().crosshair_y["Line"]["To"] = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) - CrosshairSettings.Length)
-    getgenv().crosshair_y["Line"]["From"] = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) + CrosshairSettings.Length)
-end)
+    getgenv().crosshair_y["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+        getgenv().crosshair_y["Line"]["To"] = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) - settings.length)
+        getgenv().crosshair_y["Line"]["From"] = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) + settings.length)
+    end)
+end
 
--- ========== UI ELEMENTS ==========
--- Visual Tab
-TabVisual:CreateToggle({
-    Name = "crosshair enabled",
-    CurrentValue = true,
+-- ========== UI ELEMENTS (Main Tab) ==========
+TabMain:CreateToggle({Name = "aimbot (hold mb2)", CurrentValue = false, Callback = function(v) AimEnabled = v end})
+TabMain:CreateSlider({Name = "aimbot fov", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
+TabMain:CreateToggle({Name = "walk check", CurrentValue = true, Callback = function(v) WallCheck = v end})
+TabMain:CreateToggle({Name = "team check", CurrentValue = false, Callback = function(v) TeamCheck = v end})
+TabMain:CreateToggle({Name = "alive check", CurrentValue = true, Callback = function(v) AliveCheck = v end})
+TabMain:CreateSlider({Name = "how smooth aimbot", Range = {0.10, 0.40}, CurrentValue = 0.22, Increment = 0.01, Callback = function(v) Smoothing = v end})
+
+TabMain:CreateDropdown({
+    Name = "aimbot target part",
+    Options = AimbotLimbs,
+    CurrentOption = "Head",
     Callback = function(v)
-        if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
-            getgenv().crosshair_x["Line"].Visible = v
-        end
-        if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
-            getgenv().crosshair_y["Line"].Visible = v
-        end
+        AimPart = v
     end
 })
+
+TabMain:CreateToggle({Name = "triggerbot (mouse target)", CurrentValue = false, Callback = function(v) 
+    TriggerbotEnabled = v 
+end})
+
+-- ========== UI ELEMENTS (Visuals Tab) ==========
+TabVisual:CreateToggle({Name = "crosshair enabled", CurrentValue = true, Callback = function(v)
+    if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"].Visible = v
+    end
+    if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
+        getgenv().crosshair_y["Line"].Visible = v
+    end
+end})
 
 TabVisual:CreateColorPicker({
     Name = "crosshair color",
@@ -728,7 +798,7 @@ TabVisual:CreateColorPicker({
 })
 
 TabVisual:CreateToggle({
-    Name = "lgbt crosshair",
+    Name = "lgbt crosshaor",
     CurrentValue = false,
     Callback = function(v)
         CrosshairSettings.Rainbow = v
@@ -783,30 +853,9 @@ TabVisual:CreateColorPicker({
     end
 })
 
--- Main Tab
-TabMain:CreateToggle({Name = "aimbot (hold mb2)", CurrentValue = false, Callback = function(v) AimEnabled = v end})
-TabMain:CreateSlider({Name = "aimbot fov", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
-TabMain:CreateToggle({Name = "wall check", CurrentValue = true, Callback = function(v) WallCheck = v end})
-TabMain:CreateToggle({Name = "team check", CurrentValue = false, Callback = function(v) TeamCheck = v end})
-TabMain:CreateToggle({Name = "alive check", CurrentValue = true, Callback = function(v) AliveCheck = v end})
-TabMain:CreateSlider({Name = "how smooth aimbot", Range = {0.10, 0.40}, CurrentValue = 0.22, Increment = 0.01, Callback = function(v) Smoothing = v end})
-
-TabMain:CreateDropdown({
-    Name = "aimbot target part",
-    Options = AimbotLimbs,
-    CurrentOption = "Head",
-    Callback = function(v)
-        AimPart = v
-    end
-})
-
-TabMain:CreateToggle({Name = "triggerbot (mouse target)", CurrentValue = false, Callback = function(v) 
-    TriggerbotEnabled = v 
-end})
-
--- Movement Tab
+-- ========== UI ELEMENTS (Movement Tab) ==========
 TabMovement:CreateToggle({
-    Name = "character things",
+    Name = "character thignz",
     CurrentValue = false,
     Callback = function(v)
         WalkSpeedEnabled = v
@@ -841,7 +890,7 @@ TabMovement:CreateToggle({
 })
 
 TabMovement:CreateSlider({
-    Name = "jumppower value",
+    Name = "jumpower value",
     Range = {50, 350},
     CurrentValue = 100,
     Increment = 5,
@@ -853,7 +902,7 @@ TabMovement:CreateSlider({
     end
 })
 
--- Misc Tab
+-- ========== UI ELEMENTS (Misc Tab) ==========
 TabMisc:CreateToggle({
     Name = "fullbright (protected)",
     CurrentValue = false,
@@ -982,7 +1031,237 @@ TabMisc:CreateButton({Name = "rejoin", Callback = function()
     game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
 end})
 
--- ========== INITIAL STATES ==========
+-- ========== WHITELIST TAB ==========
+TabWhitelist:CreateToggle({
+    Name = "enable whitelist (ignore players)",
+    CurrentValue = false,
+    Callback = function(v)
+        WhitelistEnabled = v
+    end
+})
+
+local WhitelistTextBox
+WhitelistTextBox = TabWhitelist:CreateInput({
+    Name = "whitelist players (comma separated)",
+    CurrentValue = "",
+    Callback = function(v)
+        UpdateWhitelistFromText(v)
+    end
+})
+
+TabWhitelist:CreateButton({
+    Name = "add current target (mouse over player)",
+    Callback = function()
+        local target = mouse.Target
+        if target then
+            local character = target:FindFirstAncestorWhichIsA("Model")
+            if character then
+                local hitPlayer = Players:GetPlayerFromCharacter(character)
+                if hitPlayer and hitPlayer ~= LocalPlayer then
+                    local alreadyIn = false
+                    for _, name in ipairs(WhitelistPlayers) do
+                        if string.lower(name) == string.lower(hitPlayer.Name) then
+                            alreadyIn = true
+                            break
+                        end
+                    end
+                    if not alreadyIn then
+                        table.insert(WhitelistPlayers, hitPlayer.Name)
+                        WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+                        Rayfield:Notify({
+                            Title = "Whitelist",
+                            Content = "Added: " .. hitPlayer.Name,
+                            Duration = 2
+                        })
+                    else
+                        Rayfield:Notify({
+                            Title = "Whitelist",
+                            Content = "Player already in whitelist",
+                            Duration = 2
+                        })
+                    end
+                end
+            end
+        end
+    end
+})
+
+TabWhitelist:CreateButton({
+    Name = "clear whitelist",
+    Callback = function()
+        WhitelistPlayers = {}
+        WhitelistTextBox:SetText("")
+        Rayfield:Notify({
+            Title = "Whitelist",
+            Content = "Whitelist cleared",
+            Duration = 2
+        })
+    end
+})
+
+-- ========== CONFIGS TAB ==========
+local configDropdown
+
+TabConfigs:CreateButton({
+    Name = "save current config",
+    Callback = function()
+        local success = ConfigService:SaveConfig(ConfigService.CurrentConfig)
+        Rayfield:Notify({
+            Title = "Config Saved",
+            Content = "Saved as: " .. ConfigService.CurrentConfig,
+            Duration = 3
+        })
+    end
+})
+
+local newConfigName = "my_config"
+TabConfigs:CreateInput({
+    Name = "new config name",
+    CurrentValue = "my_config",
+    Callback = function(v)
+        newConfigName = v
+    end
+})
+
+TabConfigs:CreateButton({
+    Name = "save as new config",
+    Callback = function()
+        if newConfigName and newConfigName ~= "" then
+            ConfigService:SaveConfig(newConfigName)
+            Rayfield:Notify({
+                Title = "Config Saved",
+                Content = "Saved as: " .. newConfigName,
+                Duration = 3
+            })
+            configDropdown:SetOptions(ConfigService:GetConfigList())
+        end
+    end
+})
+
+configDropdown = TabConfigs:CreateDropdown({
+    Name = "load config",
+    Options = ConfigService:GetConfigList(),
+    CurrentOption = ConfigService.CurrentConfig,
+    Callback = function(v)
+        ConfigService:LoadConfig(v)
+        ConfigService:ApplySettings()
+        -- Update UI values
+        WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+        Rayfield:Notify({
+            Title = "Config Loaded",
+            Content = "Loaded: " .. v,
+            Duration = 3
+        })
+    end
+})
+
+TabConfigs:CreateButton({
+    Name = "delete current config",
+    Callback = function()
+        if ConfigService.CurrentConfig ~= "default" then
+            local success, err = pcall(function()
+                delfile(ConfigService.ConfigFolder .. "/" .. ConfigService.ConfigFileName .. "_" .. ConfigService.CurrentConfig .. ".json")
+            end)
+            if success then
+                Rayfield:Notify({
+                    Title = "Config Deleted",
+                    Content = "Deleted: " .. ConfigService.CurrentConfig,
+                    Duration = 3
+                })
+                ConfigService:LoadConfig("default")
+                ConfigService:ApplySettings()
+                WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+                configDropdown:SetOptions(ConfigService:GetConfigList())
+                configDropdown:SetValue("default")
+            end
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Content = "Cannot delete default config",
+                Duration = 3
+            })
+        end
+    end
+})
+
+TabConfigs:CreateButton({
+    Name = "reset to defaults",
+    Callback = function()
+        for key, value in pairs(DefaultSettings) do
+            DefaultSettings[key] = value
+        end
+        ConfigService:ApplySettings()
+        ConfigService:SaveConfig("default")
+        WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+        Rayfield:Notify({
+            Title = "Reset",
+            Content = "Reset to default settings",
+            Duration = 3
+        })
+    end
+})
+
+-- ========== TRIGGERBOT (с учетом whitelist) ==========
+RunService.RenderStepped:Connect(function()
+    if not TriggerbotEnabled then return end
+
+    local target = mouse.Target
+    if not target then return end
+
+    local character = target:FindFirstAncestorWhichIsA("Model") or target.Parent
+    
+    while character and not character:FindFirstChildOfClass("Humanoid") do
+        character = character.Parent
+    end
+
+    if not character or not character:FindFirstChildOfClass("Humanoid") then return end
+
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    local hitPlayer = Players:GetPlayerFromCharacter(character)
+
+    if humanoid.Health <= 0 or not hitPlayer or hitPlayer == LocalPlayer then return end
+    
+    -- Whitelist check for triggerbot
+    if IsWhitelisted(hitPlayer) then return end
+
+    local doShoot = true
+
+    if AliveCheck and humanoid.Health <= 0 then doShoot = false end
+    if TeamCheck and hitPlayer.Team == LocalPlayer.Team then doShoot = false end
+
+    local checkPart = character:FindFirstChild(AimPart) 
+                   or character:FindFirstChild("Head") 
+                   or character:FindFirstChild("HumanoidRootPart")
+    if WallCheck and checkPart and not IsVisible(checkPart) then
+        doShoot = false
+    end
+
+    if doShoot then
+        local mousePos = UserInputService:GetMouseLocation()
+        local screenPos, onScreen = Camera:WorldToViewportPoint(character.HumanoidRootPart.Position)
+        if onScreen then
+            local dist = (Vector2.new(screenPos.X, screenPos.Y) - mousePos).Magnitude
+            if dist > FOVRadius then
+                doShoot = false
+            end
+        end
+    end
+
+    if doShoot then
+        mouse1press()
+        repeat
+            RunService.RenderStepped:Wait()
+        until not mouse.Target or not (mouse.Target:FindFirstAncestorWhichIsA("Model") or mouse.Target.Parent):FindFirstChildOfClass("Humanoid")
+        mouse1release()
+    end
+end)
+
+-- Загружаем последний конфиг
+ConfigService:LoadConfig("default")
+ConfigService:ApplySettings()
+WhitelistTextBox:SetText(table.concat(WhitelistPlayers, ", "))
+
+-- Установка начальных значений
 AimEnabled = false
 TriggerbotEnabled = false
 WalkSpeedEnabled = false
