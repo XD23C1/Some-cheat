@@ -31,6 +31,26 @@ local mouse = LocalPlayer:GetMouse()
 local DesiredFOV = Camera.FieldOfView
 local FOVProtectionEnabled = true
 
+getgenv().DealerESPEnabled = false
+getgenv().ArmoryESPEnabled = false
+getgenv().CashESPEnabled = false
+getgenv().ScrapESPEnabled = false
+getgenv().SafeESPEnabled = false     
+getgenv().RegisterESPEnabled = false
+getgenv().VendingESPEnabled = false
+
+local ItemESPColor = {
+    Dealer = Color3.fromRGB(38, 38, 38),
+    Armory = Color3.fromRGB(30, 255, 0),
+    Cash = Color3.fromRGB(0, 255, 100),
+    Scrap = Color3.fromRGB(234, 208, 168),
+    Safe = Color3.fromRGB(255, 215, 0),
+    Register = Color3.fromRGB(190, 200, 200),
+    Vending = Color3.fromRGB(255, 89, 89)
+}
+
+local ItemDrawings = {}
+
 RunService.RenderStepped:Connect(function()
     if FOVProtectionEnabled and Camera and Camera.FieldOfView ~= DesiredFOV then
         Camera.FieldOfView = DesiredFOV
@@ -260,6 +280,24 @@ local function CreateESP(plr)
     ESPObjects[plr] = {Box = box, Tracer = tracer, Name = name}
 end
 
+local function CreateItemDrawing(name, color)
+    local data = {}
+    data.Box = Drawing.new("Square")
+    data.Box.Thickness = 2
+    data.Box.Filled = false
+    data.Box.Transparency = 1
+    data.Box.Color = color or Color3.fromRGB(255,255,255)
+    
+    data.Name = Drawing.new("Text")
+    data.Name.Size = 13
+    data.Name.Center = true
+    data.Name.Outline = true
+    data.Name.Color = Color3.new(1,1,1)
+    data.Name.Text = name
+    
+    return data
+end
+
 local function UpdateChams()
     for _, plr in ipairs(Players:GetPlayers()) do
         if plr ~= LocalPlayer and plr.Character then
@@ -281,59 +319,11 @@ local function UpdateChams()
     end
 end
 
-local function UpdateESP()
-    if not getgenv().ESPEnabled then
-        for _, data in pairs(ESPObjects) do
-            data.Box.Visible = false
-            data.Tracer.Visible = false
-            data.Name.Visible = false
-        end
-        return
-    end
-
-    for plr, data in pairs(ESPObjects) do
-        local char = plr.Character
-        if not char or not char:FindFirstChild("HumanoidRootPart") or not char:FindFirstChild("Head") then
-            data.Box.Visible = false; data.Tracer.Visible = false; data.Name.Visible = false
-            continue
-        end
-
-        local root = char.HumanoidRootPart
-        local head = char.Head
-        local rootPos = Camera:WorldToViewportPoint(root.Position)
-        local headPos = Camera:WorldToViewportPoint(head.Position + Vector3.new(0, 0.5, 0))
-        local legPos = Camera:WorldToViewportPoint(root.Position - Vector3.new(0, 3, 0))
-
-        if rootPos.Z < 0 then
-            data.Box.Visible = false; data.Tracer.Visible = false; data.Name.Visible = false
-            continue
-        end
-
-        local rainbowCol = Rainbow(getgenv().RainbowSpeed)
-        local height = math.abs(headPos.Y - legPos.Y) * 1.1
-        local width = height * 0.55
-
-        data.Box.Size = Vector2.new(width, height)
-        data.Box.Position = Vector2.new(rootPos.X - width/2, rootPos.Y - height/2)
-        data.Box.Color = rainbowCol
-        data.Box.Visible = true
-
-        data.Tracer.From = Vector2.new(Camera.ViewportSize.X/2, Camera.ViewportSize.Y)
-        data.Tracer.To = Vector2.new(rootPos.X, rootPos.Y)
-        data.Tracer.Color = rainbowCol
-        data.Tracer.Visible = true
-
-        local dist = math.floor((root.Position - Camera.CFrame.Position).Magnitude)
-        data.Name.Text = plr.Name .. " [" .. dist .. "]"
-        data.Name.Position = Vector2.new(rootPos.X, data.Box.Position.Y - 20)
-        data.Name.Visible = true
-    end
-end
-
 RunService.RenderStepped:Connect(function()
     UpdateChams()
     UpdateESP()
 
+    -- Skeleton (твой старый код)
     for plr, lines in pairs(skeletons) do
         for _, line in pairs(lines) do line.Visible = false end
     end
@@ -361,6 +351,72 @@ RunService.RenderStepped:Connect(function()
             end
         end
     end
+
+    -- ====================== ITEM ESP ======================
+    local function UpdateItemESP(enabled, folderPath, partName, espKey, displayName, color)
+        if not enabled then return end
+        
+        for _, obj in ipairs(folderPath:GetDescendants()) do
+            local mainPart = obj:FindFirstChild(partName) or (obj:IsA("BasePart") and obj)
+            if not mainPart then continue end
+            
+            local key = obj -- или mainPart
+            if not ItemDrawings[key] then
+                ItemDrawings[key] = CreateItemDrawing(displayName, color)
+            end
+            
+            local drawings = ItemDrawings[key]
+            local pos, onScreen = Camera:WorldToViewportPoint(mainPart.Position)
+            
+            if onScreen and pos.Z > 0 then
+                local dist = (mainPart.Position - Camera.CFrame.Position).Magnitude
+                local size = math.clamp(3000 / dist, 20, 80)  -- авто-размер
+                
+                drawings.Box.Size = Vector2.new(size, size * 1.4)
+                drawings.Box.Position = Vector2.new(pos.X - size/2, pos.Y - size/2)
+                drawings.Box.Color = color
+                drawings.Box.Visible = true
+                
+                drawings.Name.Text = displayName .. " [" .. math.floor(dist) .. "]"
+                drawings.Name.Position = Vector2.new(pos.X, pos.Y - size/2 - 18)
+                drawings.Name.Visible = true
+            else
+                drawings.Box.Visible = false
+                drawings.Name.Visible = false
+            end
+        end
+    end
+
+    -- Dealers
+    UpdateItemESP(getgenv().DealerESPEnabled, workspace.Map.Shopz, "MainPart", "dealer", "Dealer", ItemESPColor.Dealer)
+
+    -- Armory Dealers
+    UpdateItemESP(getgenv().ArmoryESPEnabled, workspace.Map.Shopz, "MainPart", "armory", "Armory Dealer", ItemESPColor.Armory)
+
+    -- Cash
+    UpdateItemESP(getgenv().CashESPEnabled, workspace.Filter.SpawnedBread, nil, "cash", "Cash", ItemESPColor.Cash)
+
+    -- Scrap
+    UpdateItemESP(getgenv().ScrapESPEnabled, workspace.Filter.SpawnedPiles, nil, "scrap", "Scrap", ItemESPColor.Scrap)
+
+    -- Safes (Medium + Small)
+    if getgenv().SafeESPEnabled then
+        for _, safe in ipairs(workspace.Map.BredMakurz:GetDescendants()) do
+            if safe.Name:find("Safe") and safe:FindFirstChild("MainPart") then
+                local display = safe.Name:find("Medium") and "Medium Safe" or "Small Safe"
+                UpdateItemESP(true, {safe}, "MainPart", "safe", display, ItemESPColor.Safe)
+            end
+        end
+    end
+
+    -- Registers
+    UpdateItemESP(getgenv().RegisterESPEnabled, workspace.Map.BredMakurz, "MainPart", "register", "Register", ItemESPColor.Register)
+
+    -- Vending Machines
+    UpdateItemESP(getgenv().VendingESPEnabled, workspace.Map.VendingMachines, "MainPart", "vending", "Vending", ItemESPColor.Vending)
+
+    -- Скрываем неиспользуемые drawings (опционально, но рекомендуется)
+    -- Можно добавить cleanup при отключении, но для простоты оставляем
 end)
 
 Players.PlayerAdded:Connect(function(plr)
@@ -495,6 +551,34 @@ TabVisual:CreateToggle({Name = "lgbt circle", Flag = "FOVRainbow", CurrentValue 
 TabVisual:CreateColorPicker({Name = "circle color", Flag = "FOVCircleColor", Color = Color3.fromRGB(255, 255, 225), Callback = function(v) FOVCircleColor = v end})
 TabVisual:CreateSlider({Name = "camera field of view (fixed)", Flag = "CameraFOV", Range = {60, 120}, CurrentValue = Camera.FieldOfView, Increment = 1, Callback = function(v)
     SetProtectedFOV(v)
+end})
+
+TabVisual:CreateToggle({Name = "Dealer ESP", CurrentValue = false, Callback = function(v)
+    getgenv().DealerESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Armory Dealer ESP", CurrentValue = false, Callback = function(v)
+    getgenv().ArmoryESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Cash ESP", CurrentValue = false, Callback = function(v)
+    getgenv().CashESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Scrap ESP", CurrentValue = false, Callback = function(v)
+    getgenv().ScrapESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Safes ESP", CurrentValue = false, Callback = function(v)
+    getgenv().SafeESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Registers ESP", CurrentValue = false, Callback = function(v)
+    getgenv().RegisterESPEnabled = v
+end})
+
+TabVisual:CreateToggle({Name = "Vending Machines ESP", CurrentValue = false, Callback = function(v)
+    getgenv().VendingESPEnabled = v
 end})
 
 TabVisual:CreateToggle({Name = "fov protect (antireset)", Flag = "FOVProtection", CurrentValue = true, Callback = function(v)
