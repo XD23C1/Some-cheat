@@ -1,5 +1,822 @@
--- IF SOMEBODY. LOOKING THIS CODE. YOU WILL BE GONE.
--- By XD23C1 github
+-- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU 
+-- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU -- FUCK YOU 
+
+
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "LarpNality % FemboyNality",
+    LoadingTitle = "RVVZ gandon",
+    LoadingSubtitle = "I'm legit 100%",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "LarpNalityConfig",
+        FileName = "LarpNality"
+    },
+    KeySystem = false
+})
+
+local TabMain = Window:CreateTab("combat", 4483362458)
+local TabVisual = Window:CreateTab("visuals (client)", 4483362458)
+local TabMisc = Window:CreateTab("miscs", 4483362458)
+local TabMovement = Window:CreateTab("character things", 4483362458)
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Camera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+
+local mouse = LocalPlayer:GetMouse()
+
+local DesiredFOV = Camera.FieldOfView
+local FOVProtectionEnabled = true
+
+RunService.RenderStepped:Connect(function()
+    if FOVProtectionEnabled and Camera and Camera.FieldOfView ~= DesiredFOV then
+        Camera.FieldOfView = DesiredFOV
+    end
+end)
+
+local function SetProtectedFOV(value)
+    DesiredFOV = value
+    if Camera then
+        Camera.FieldOfView = value
+    end
+end
+
+local WalkSpeedEnabled = false
+local JumpPowerEnabled = false
+local DesiredWalkSpeed = 16
+local DesiredJumpPower = 50
+
+local function SetWalkSpeed(value)
+    DesiredWalkSpeed = value
+    local char = LocalPlayer.Character
+    if char and char:FindFirstChild("Humanoid") then
+        char.Humanoid.WalkSpeed = value
+    end
+end
+
+local function SetJumpPower(value)
+    DesiredJumpPower = value
+    local char = LocalPlayer.Character
+    if char and char:FindFirstChild("Humanoid") then
+        char.Humanoid.JumpPower = value
+    end
+end
+
+RunService.RenderStepped:Connect(function()
+    local char = LocalPlayer.Character
+    if char and char:FindFirstChild("Humanoid") then
+        local humanoid = char.Humanoid
+        if WalkSpeedEnabled and humanoid.WalkSpeed ~= DesiredWalkSpeed then
+            humanoid.WalkSpeed = DesiredWalkSpeed
+        end
+        if JumpPowerEnabled and humanoid.JumpPower ~= DesiredJumpPower then
+            humanoid.JumpPower = DesiredJumpPower
+        end
+    end
+end)
+
+LocalPlayer.CharacterAdded:Connect(function(character)
+    task.wait(0.5)
+    local humanoid = character:FindFirstChild("Humanoid")
+    if humanoid then
+        if WalkSpeedEnabled then
+            humanoid.WalkSpeed = DesiredWalkSpeed
+        end
+        if JumpPowerEnabled then
+            humanoid.JumpPower = DesiredJumpPower
+        end
+    end
+end)
+
+local supportlink = "https://www.roblox.com/game-pass/1789175771/supportyea"
+
+getgenv().RainbowEnabled = true
+getgenv().RainbowSpeed = 0.6
+
+local function Rainbow(speed)
+    if not getgenv().RainbowEnabled then
+        return Color3.fromRGB(255, 255, 255)
+    end
+    return Color3.fromHSV((tick() * speed) % 1, 1, 1)
+end
+
+local AimEnabled = false
+local FOVRadius = 180
+local WallCheck = true
+local AimPart = "Head"
+local Smoothing = 0.22
+local FOVCircleColor = Color3.fromRGB(0, 255, 150)
+local FOVRainbow = false
+local TeamCheck = false
+local AliveCheck = true
+
+local AimbotLimbs = {
+    "Head",
+    "Torso",
+	"HumanoidRootPart",
+    "Left Arm",
+    "Right Arm", 
+    "Left Leg",
+    "Right Leg"
+}
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Thickness = 2
+FOVCircle.NumSides = 80
+FOVCircle.Filled = false
+FOVCircle.Transparency = 0.7
+FOVCircle.Visible = false
+
+local TriggerbotEnabled = false
+
+local OriginalLighting = {
+    Brightness = game.Lighting.Brightness,
+    ClockTime = game.Lighting.ClockTime,
+    FogEnd = game.Lighting.FogEnd,
+    Ambient = game.Lighting.Ambient,
+    OutdoorAmbient = game.Lighting.OutdoorAmbient,
+    GlobalShadows = game.Lighting.GlobalShadows,
+    TimeOfDay = game.Lighting.TimeOfDay
+}
+
+local function IsVisible(part)
+    if not WallCheck then return true end
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {LocalPlayer.Character or {}}
+    params.FilterType = Enum.RaycastFilterType.Exclude
+    local ray = workspace:Raycast(Camera.CFrame.Position, (part.Position - Camera.CFrame.Position).Unit * 1000, params)
+    return not ray or ray.Instance:IsDescendantOf(part.Parent)
+end
+
+local function GetClosestPlayer()
+    local closest, dist = nil, FOVRadius
+    local mousePos = UserInputService:GetMouseLocation()
+    
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("Humanoid") then
+            if AliveCheck and plr.Character.Humanoid.Health <= 0 then continue end
+            if TeamCheck and plr.Team == LocalPlayer.Team then continue end
+
+            local part = plr.Character:FindFirstChild(AimPart)
+            if not part then
+                part = plr.Character:FindFirstChild("UpperTorso") or plr.Character:FindFirstChild("Head") or plr.Character:FindFirstChild("HumanoidRootPart")
+            end
+            if part then
+                local screen, onScreen = Camera:WorldToViewportPoint(part.Position)
+                if onScreen then
+                    local distance = (Vector2.new(screen.X, screen.Y) - mousePos).Magnitude
+                    if distance < dist and IsVisible(part) then
+                        dist = distance
+                        closest = plr.Character
+                    end
+                end
+            end
+        end
+    end
+    return closest
+end
+
+local currentConnection = nil
+
+local function StartAimbot()
+    if currentConnection then currentConnection:Disconnect() end
+
+    currentConnection = RunService.RenderStepped:Connect(function()
+        local mousePos = UserInputService:GetMouseLocation()
+        FOVCircle.Position = Vector2.new(mousePos.X, mousePos.Y)
+        FOVCircle.Radius = FOVRadius
+        
+        if FOVRainbow then
+            FOVCircle.Color = Rainbow(getgenv().RainbowSpeed)
+        else
+            FOVCircle.Color = FOVCircleColor
+        end
+        FOVCircle.Visible = AimEnabled
+
+        if not AimEnabled then return end
+        if not UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2) then return end
+
+        local target = GetClosestPlayer()
+        if target then
+            local targetPart = target:FindFirstChild(AimPart)
+            if not targetPart then
+                targetPart = target:FindFirstChild("UpperTorso") or target:FindFirstChild("Head") or target:FindFirstChild("HumanoidRootPart")
+            end
+            
+            if targetPart then
+                local targetPos = targetPart.Position
+                local currentCFrame = Camera.CFrame
+                local targetCFrame = CFrame.lookAt(currentCFrame.Position, targetPos)
+                Camera.CFrame = currentCFrame:Lerp(targetCFrame, Smoothing)
+            end
+        end
+    end)
+end
+
+LocalPlayer.CharacterAdded:Connect(function()
+    task.wait(0.6)
+    StartAimbot()
+end)
+
+task.wait(1)
+StartAimbot()
+
+getgenv().ChamsEnabled = false
+getgenv().SkeletonEnabled = false
+getgenv().ESPEnabled = false
+
+local skeletons = {}
+local ESPObjects = {}
+
+local r6Bones = {
+    {"Torso", "Head"}, {"Torso", "Left Arm"}, {"Left Arm", "Left Hand"},
+    {"Torso", "Right Arm"}, {"Right Arm", "Right Hand"},
+    {"Torso", "Left Leg"}, {"Left Leg", "Left Foot"},
+    {"Torso", "Right Leg"}, {"Right Leg", "Right Foot"},
+}
+
+local function CreateSkeleton()
+    local lines = {}
+    for i = 1, #r6Bones do
+        local line = Drawing.new("Line")
+        line.Thickness = 2
+        line.Transparency = 1
+        lines[i] = line
+    end
+    return lines
+end
+
+local function CreateESP(plr)
+    if plr == LocalPlayer or ESPObjects[plr] then return end
+    local box = Drawing.new("Square")
+    box.Thickness = 2; box.Filled = false; box.Transparency = 1
+    local tracer = Drawing.new("Line")
+    tracer.Thickness = 1.5; tracer.Transparency = 1
+    local name = Drawing.new("Text")
+    name.Size = 13; name.Center = true; name.Outline = true; name.Color = Color3.new(1,1,1)
+    ESPObjects[plr] = {Box = box, Tracer = tracer, Name = name}
+end
+
+local function UpdateChams()
+    for _, plr in ipairs(Players:GetPlayers()) do
+        if plr ~= LocalPlayer and plr.Character then
+            local hl = plr.Character:FindFirstChildOfClass("Highlight")
+            if getgenv().ChamsEnabled then
+                if not hl then
+                    hl = Instance.new("Highlight")
+                    hl.Adornee = plr.Character
+                    hl.Parent = plr.Character
+                end
+                hl.FillColor = Rainbow(getgenv().RainbowSpeed)
+                hl.OutlineColor = Color3.fromRGB(255, 255, 255)
+                hl.FillTransparency = 0.5
+                hl.OutlineTransparency = 0
+            else
+                if hl then hl:Destroy() end
+            end
+        end
+    end
+end
+
+local function UpdateESP()
+    if not getgenv().ESPEnabled then
+        for _, data in pairs(ESPObjects) do
+            data.Box.Visible = false
+            data.Tracer.Visible = false
+            data.Name.Visible = false
+        end
+        return
+    end
+
+    for plr, data in pairs(ESPObjects) do
+        local char = plr.Character
+        if not char or not char:FindFirstChild("HumanoidRootPart") or not char:FindFirstChild("Head") then
+            data.Box.Visible = false; data.Tracer.Visible = false; data.Name.Visible = false
+            continue
+        end
+
+        local root = char.HumanoidRootPart
+        local head = char.Head
+        local rootPos = Camera:WorldToViewportPoint(root.Position)
+        local headPos = Camera:WorldToViewportPoint(head.Position + Vector3.new(0, 0.5, 0))
+        local legPos = Camera:WorldToViewportPoint(root.Position - Vector3.new(0, 3, 0))
+
+        if rootPos.Z < 0 then
+            data.Box.Visible = false; data.Tracer.Visible = false; data.Name.Visible = false
+            continue
+        end
+
+        local rainbowCol = Rainbow(getgenv().RainbowSpeed)
+        local height = math.abs(headPos.Y - legPos.Y) * 1.1
+        local width = height * 0.55
+
+        data.Box.Size = Vector2.new(width, height)
+        data.Box.Position = Vector2.new(rootPos.X - width/2, rootPos.Y - height/2)
+        data.Box.Color = rainbowCol
+        data.Box.Visible = true
+
+        data.Tracer.From = Vector2.new(Camera.ViewportSize.X/2, Camera.ViewportSize.Y)
+        data.Tracer.To = Vector2.new(rootPos.X, rootPos.Y)
+        data.Tracer.Color = rainbowCol
+        data.Tracer.Visible = true
+
+        local dist = math.floor((root.Position - Camera.CFrame.Position).Magnitude)
+        data.Name.Text = plr.Name .. " [" .. dist .. "]"
+        data.Name.Position = Vector2.new(rootPos.X, data.Box.Position.Y - 20)
+        data.Name.Visible = true
+    end
+end
+
+RunService.RenderStepped:Connect(function()
+    UpdateChams()
+    UpdateESP()
+
+    for plr, lines in pairs(skeletons) do
+        for _, line in pairs(lines) do line.Visible = false end
+    end
+
+    if getgenv().SkeletonEnabled then
+        for _, plr in ipairs(Players:GetPlayers()) do
+            if plr ~= LocalPlayer and plr.Character and plr.Character:FindFirstChild("Torso") then
+                if not skeletons[plr] then skeletons[plr] = CreateSkeleton() end
+                local char = plr.Character
+                for i, bone in ipairs(r6Bones) do
+                    local p1 = char:FindFirstChild(bone[1])
+                    local p2 = char:FindFirstChild(bone[2])
+                    if p1 and p2 then
+                        local pos1 = Camera:WorldToViewportPoint(p1.Position)
+                        local pos2 = Camera:WorldToViewportPoint(p2.Position)
+                        if pos1.Z > 0 and pos2.Z > 0 then
+                            local line = skeletons[plr][i]
+                            line.From = Vector2.new(pos1.X, pos1.Y)
+                            line.To = Vector2.new(pos2.X, pos2.Y)
+                            line.Color = Rainbow(getgenv().RainbowSpeed)
+                            line.Visible = true
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+Players.PlayerAdded:Connect(function(plr)
+    CreateESP(plr)
+end)
+
+for _, plr in ipairs(Players:GetPlayers()) do
+    CreateESP(plr)
+end
+
+CrosshairSettings = {
+    Color = Color3.fromRGB(255, 255, 255),
+    Rainbow = false,
+    Thickness = 2,
+    Length = 8,
+    Opacity = 1
+}
+
+local function UpdateCrosshairColor()
+    if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"].Color = CrosshairSettings.Color
+    end
+    if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
+        getgenv().crosshair_y["Line"].Color = CrosshairSettings.Color
+    end
+end
+
+local function UpdateCrosshairStyle()
+    if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"].Thickness = CrosshairSettings.Thickness
+        getgenv().crosshair_x["Line"].Transparency = CrosshairSettings.Opacity
+    end
+    if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
+        getgenv().crosshair_y["Line"].Thickness = CrosshairSettings.Thickness
+        getgenv().crosshair_y["Line"].Transparency = CrosshairSettings.Opacity
+    end
+end
+
+local function UpdateCrosshairPosition()
+    local cam = workspace.CurrentCamera
+    if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"].To = Vector2.new(((cam.ViewportSize.x / 2) - 0) - CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0)
+        getgenv().crosshair_x["Line"].From = Vector2.new(((cam.ViewportSize.x / 2) - 0) + CrosshairSettings.Length, (cam.ViewportSize.y / 2) - 0)
+    end
+    if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
+        getgenv().crosshair_y["Line"].To = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) - CrosshairSettings.Length)
+        getgenv().crosshair_y["Line"].From = Vector2.new((cam.ViewportSize.x / 2) - 0, ((cam.ViewportSize.y / 2) - 0) + CrosshairSettings.Length)
+    end
+end
+
+TabVisual:CreateToggle({
+    Name = "crosshair enabled",
+    CurrentValue = true,
+    Callback = function(v)
+        if getgenv().crosshair_x and getgenv().crosshair_x["Line"] then
+            getgenv().crosshair_x["Line"].Visible = v
+        end
+        if getgenv().crosshair_y and getgenv().crosshair_y["Line"] then
+            getgenv().crosshair_y["Line"].Visible = v
+        end
+    end
+})
+
+TabVisual:CreateColorPicker({
+    Name = "crosshair color",
+    Color = Color3.fromRGB(255, 255, 255),
+    Callback = function(v)
+        CrosshairSettings.Color = v
+        if not CrosshairSettings.Rainbow then
+            UpdateCrosshairColor()
+        end
+    end
+})
+
+TabVisual:CreateToggle({
+    Name = "lgbt crosshaor",
+    CurrentValue = false,
+    Callback = function(v)
+        CrosshairSettings.Rainbow = v
+        UpdateCrosshairColor()
+    end
+})
+
+TabVisual:CreateSlider({
+    Name = "fatty crosshair",
+    Range = {1, 5},
+    CurrentValue = 2,
+    Increment = 1,
+    Callback = function(v)
+        CrosshairSettings.Thickness = v
+        UpdateCrosshairStyle()
+    end
+})
+
+TabVisual:CreateSlider({
+    Name = "length crosshair line",
+    Range = {4, 20},
+    CurrentValue = 8,
+    Increment = 1,
+    Callback = function(v)
+        CrosshairSettings.Length = v
+        UpdateCrosshairPosition()
+    end
+})
+
+TabVisual:CreateSlider({
+    Name = "transparency of crosshair",
+    Range = {0, 1},
+    CurrentValue = 1,
+    Increment = 0.05,
+    Callback = function(v)
+        CrosshairSettings.Opacity = v
+        UpdateCrosshairStyle()
+    end
+})
+
+TabMain:CreateToggle({Name = "aimbot (hold mb2)", Flag = "AimbotToggle", CurrentValue = false, Callback = function(v) AimEnabled = v end})
+TabMain:CreateSlider({Name = "aimbot fov", Flag = "AimbotFOV", Range = {50, 400}, CurrentValue = 180, Increment = 5, Callback = function(v) FOVRadius = v end})
+TabMain:CreateToggle({Name = "walk check", Flag = "WallCheck", CurrentValue = true, Callback = function(v) WallCheck = v end})
+TabMain:CreateToggle({Name = "team check", Flag = "TeamCheck", CurrentValue = false, Callback = function(v) TeamCheck = v end})
+TabMain:CreateToggle({Name = "alive check", Flag = "AliveCheck", CurrentValue = true, Callback = function(v) AliveCheck = v end})
+TabMain:CreateSlider({Name = "how smooth aimbot", Flag = "Smoothing", Range = {0.10, 0.40}, CurrentValue = 0.22, Increment = 0.01, Callback = function(v) Smoothing = v end})
+TabMain:CreateDropdown({Name = "aimbot target part", Flag = "AimPart", Options = AimbotLimbs, CurrentOption = "Head", Callback = function(v) AimPart = v end})
+TabMain:CreateToggle({Name = "triggerbot (mouse target)", Flag = "TriggerbotToggle", CurrentValue = false, Callback = function(v) TriggerbotEnabled = v end})
+
+TabVisual:CreateToggle({Name = "lgbt rgb (rainbow)", Flag = "RainbowEnabled", CurrentValue = true, Callback = function(v) getgenv().RainbowEnabled = v end})
+TabVisual:CreateSlider({Name = "lgbt speed (less mean slower)", Flag = "RainbowSpeed", Range = {0.1, 3}, CurrentValue = 0.6, Increment = 0.05, Callback = function(v) getgenv().RainbowSpeed = v end})
+TabVisual:CreateToggle({Name = "chams", Flag = "ChamsEnabled", CurrentValue = false, Callback = function(v) getgenv().ChamsEnabled = v end})
+TabVisual:CreateToggle({Name = "skeleton", Flag = "SkeletonEnabled", CurrentValue = false, Callback = function(v) getgenv().SkeletonEnabled = v end})
+TabVisual:CreateToggle({Name = "tracers", Flag = "ESPEnabled", CurrentValue = false, Callback = function(v) getgenv().ESPEnabled = v end})
+TabVisual:CreateToggle({Name = "lgbt circle", Flag = "FOVRainbow", CurrentValue = false, Callback = function(v) FOVRainbow = v end})
+TabVisual:CreateColorPicker({Name = "circle color", Flag = "FOVCircleColor", Color = Color3.fromRGB(255, 255, 225), Callback = function(v) FOVCircleColor = v end})
+TabVisual:CreateSlider({Name = "camera field of view (fixed)", Flag = "CameraFOV", Range = {60, 120}, CurrentValue = Camera.FieldOfView, Increment = 1, Callback = function(v)
+    SetProtectedFOV(v)
+end})
+
+TabVisual:CreateToggle({Name = "fov protect (antireset)", Flag = "FOVProtection", CurrentValue = true, Callback = function(v)
+    FOVProtectionEnabled = v
+    if v then
+        SetProtectedFOV(DesiredFOV)
+    end
+end})
+
+-- Movement Tab
+TabMovement:CreateToggle({
+    Name = "character thignz",
+    CurrentValue = false,
+    Callback = function(v)
+        WalkSpeedEnabled = v
+        if v then
+            SetWalkSpeed(DesiredWalkSpeed)
+        end
+    end
+})
+
+TabMovement:CreateSlider({
+    Name = "walkspeed value",
+    Range = {16, 250},
+    CurrentValue = 32,
+    Increment = 1,
+    Callback = function(v)
+        DesiredWalkSpeed = v
+        if WalkSpeedEnabled then
+            SetWalkSpeed(v)
+        end
+    end
+})
+
+TabMovement:CreateToggle({
+    Name = "jumppower",
+    CurrentValue = false,
+    Callback = function(v)
+        JumpPowerEnabled = v
+        if v then
+            SetJumpPower(DesiredJumpPower)
+        end
+    end
+})
+
+TabMovement:CreateSlider({
+    Name = "jumpower value",
+    Range = {50, 350},
+    CurrentValue = 100,
+    Increment = 5,
+    Callback = function(v)
+        DesiredJumpPower = v
+        if JumpPowerEnabled then
+            SetJumpPower(v)
+        end
+    end
+})
+
+-- Misc Tab
+TabMisc:CreateToggle({Name = "fullbright (flashback)", Flag = "FullbrightEnabled", CurrentValue = false, Callback = function(v)
+    if v then
+        game.Lighting.Brightness = 2
+        game.Lighting.ClockTime = 14
+        game.Lighting.FogEnd = 99999
+        game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+        game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+        game.Lighting.GlobalShadows = false
+        game.Lighting.TimeOfDay = "14:00:00"
+    else
+        game.Lighting.Brightness = OriginalLighting.Brightness
+        game.Lighting.ClockTime = OriginalLighting.ClockTime
+        game.Lighting.FogEnd = OriginalLighting.FogEnd
+        game.Lighting.Ambient = OriginalLighting.Ambient
+        game.Lighting.OutdoorAmbient = OriginalLighting.OutdoorAmbient
+        game.Lighting.GlobalShadows = OriginalLighting.GlobalShadows
+        game.Lighting.TimeOfDay = OriginalLighting.TimeOfDay
+    end
+end})
+
+
+TabMisc:CreateButton({
+    Name = "funny tool :3 (JERK OFF)",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastefy.app/wa3v2Vgm/raw", true))()
+        Rayfield:Notify({
+            Title = "you're gay",
+            Content = "ok loaded",
+            Duration = 3
+        })
+    end
+})
+
+TabMisc:CreateButton({
+    Name = "noclip tool",
+    Callback = function()
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local StarterGui = game:GetService("StarterGui")
+        local player = Players.LocalPlayer
+        local noclip = false
+        local connection
+
+        local function notify(message)
+            StarterGui:SetCore("SendNotification", {
+                Title = "Noclip";
+                Text = message;
+                Duration = 3;
+            })
+        end
+
+        local function toggleNoclip()
+            noclip = not noclip
+            if noclip then
+                connection = RunService.Stepped:Connect(function()
+                    for _, part in pairs(player.Character:GetDescendants()) do
+                        if part:IsA("BasePart") then
+                            part.CanCollide = false
+                        end
+                    end
+                end)
+                notify("noclip on")
+            else
+                if connection then
+                    connection:Disconnect()
+                end
+                for _, part in pairs(player.Character:GetDescendants()) do
+                    if part:IsA("BasePart") then
+                        part.CanCollide = true
+                    end
+                end
+                notify("noclip off")
+            end
+        end
+
+        local function createTool()
+            local tool = Instance.new("Tool")
+            tool.Name = "Noclip Tool"
+            tool.RequiresHandle = false
+            tool.CanBeDropped = false
+            tool.Parent = player:WaitForChild("Backpack")
+
+            tool.Activated:Connect(function()
+                toggleNoclip()
+            end)
+        end
+
+        local function onCharacterAdded()
+            task.wait(0.1)
+            createTool()
+        end
+
+        if player.Character then
+            onCharacterAdded()
+        end
+        player.CharacterAdded:Connect(onCharacterAdded)
+
+        Rayfield:Notify({
+            Title = "you're gay",
+            Content = "noclip tool выдан в backpack",
+            Duration = 3
+        })
+    end
+})
+
+TabMisc:CreateButton({Name = "support link pls", Callback = function()
+    setclipboard(supportlink)
+    Rayfield:Notify({
+        Title = "link",
+        Content = "coppied, put in browser",
+        Duration = 3
+    })
+end})
+
+TabMisc:CreateButton({Name = "unload Rayfield", Callback = function() Rayfield:Destroy() end})
+TabMisc:CreateButton({Name = "/q, insta close place", Callback = function() game:Shutdown() end})
+TabMisc:CreateButton({Name = "rejoin", Callback = function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, LocalPlayer)
+end})
+
+RunService.RenderStepped:Connect(function()
+    if not TriggerbotEnabled then return end
+
+    local target = mouse.Target
+    if not target then return end
+
+    local character = target:FindFirstAncestorWhichIsA("Model") 
+                     or target.Parent
+    
+    while character and not character:FindFirstChildOfClass("Humanoid") do
+        character = character.Parent
+    end
+
+    if not character or not character:FindFirstChildOfClass("Humanoid") then return end
+
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    local hitPlayer = Players:GetPlayerFromCharacter(character)
+
+    if humanoid.Health <= 0 or not hitPlayer or hitPlayer == LocalPlayer then return end
+
+    local doShoot = true
+
+    -- Alive check
+    if AliveCheck and humanoid.Health <= 0 then doShoot = false end
+
+    -- Team check
+    if TeamCheck and hitPlayer.Team == LocalPlayer.Team then doShoot = false end
+
+    -- Wall check
+    local checkPart = character:FindFirstChild(AimPart) 
+                   or character:FindFirstChild("Head") 
+                   or character:FindFirstChild("HumanoidRootPart")
+    if WallCheck and checkPart and not IsVisible(checkPart) then
+        doShoot = false
+    end
+
+    if doShoot then
+        local mousePos = UserInputService:GetMouseLocation()
+        local screenPos, onScreen = Camera:WorldToViewportPoint(character.HumanoidRootPart.Position)
+        if onScreen then
+            local dist = (Vector2.new(screenPos.X, screenPos.Y) - mousePos).Magnitude
+            if dist > FOVRadius then
+                doShoot = false
+            end
+        end
+    end
+
+    if doShoot then
+        mouse1press()
+        repeat
+            RunService.RenderStepped:Wait()
+        until not mouse.Target or not (mouse.Target:FindFirstAncestorWhichIsA("Model") or mouse.Target.Parent):FindFirstChildOfClass("Humanoid")
+        mouse1release()
+    end
+end)
+
+settings = {
+    color = Color3.fromRGB(255, 255/2, 255),
+    thickness = 2,
+    length = 8,
+    opacity = 1,
+    x_offset = 0,
+    y_offset = 0,
+    recenter = true
+}
+
+local cam = workspace.CurrentCamera or workspace:FindFirstChildOfClass("Camera")
+
+getgenv().crosshair_x = getgenv().crosshair_x or {}
+getgenv().crosshair_y = getgenv().crosshair_y or {}
+
+local function draw(a1, a2)
+    local obj = Drawing.new(a1)
+    for i, v in pairs(a2) do 
+        obj[i] = v
+    end
+    return obj
+end
+
+if getgenv().crosshair_x ~= nil or getgenv().crosshair_x ~= {} then
+    if getgenv().crosshair_x["Line"] then
+        getgenv().crosshair_x["Line"]:Remove()
+    end
+    if getgenv().crosshair_x["Connection"] then
+        getgenv().crosshair_x["Connection"]:Disconnect()
+    end
+    getgenv().crosshair_x = {}
+end
+
+if getgenv().crosshair_y ~= nil or getgenv().crosshair_y ~= {} then
+    if getgenv().crosshair_y["Line"] then
+        getgenv().crosshair_y["Line"]:Remove()
+    end
+    if getgenv().crosshair_y["Connection"] then
+        getgenv().crosshair_y["Connection"]:Disconnect()
+    end
+    getgenv().crosshair_y = {}
+end
+
+getgenv().crosshair_x["Line"] = draw("Line", {
+    To = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) - settings.length, (cam.ViewportSize.y / 2) - settings.y_offset),
+    From = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) + settings.length, (cam.ViewportSize.y / 2) - settings.y_offset),
+    Thickness = settings.thickness,
+    Color = settings.color,
+    Transparency = settings.opacity,
+    Visible = true
+})
+
+getgenv().crosshair_y["Line"] = draw("Line", {
+    To = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) - settings.length),
+    From = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) + settings.length),
+    Thickness = settings.thickness,
+    Color = settings.color,
+    Transparency = settings.opacity,
+    Visible = true
+})
+
+if settings.recenter then
+    getgenv().crosshair_x["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+        getgenv().crosshair_x["Line"]["To"] = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) - settings.length, (cam.ViewportSize.y / 2) - settings.y_offset)
+        getgenv().crosshair_x["Line"]["From"] = Vector2.new(((cam.ViewportSize.x / 2) - settings.x_offset) + settings.length, (cam.ViewportSize.y / 2) - settings.y_offset)
+    end)
+
+    getgenv().crosshair_y["Connection"] = cam:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+        getgenv().crosshair_y["Line"]["To"] = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) - settings.length)
+        getgenv().crosshair_y["Line"]["From"] = Vector2.new((cam.ViewportSize.x / 2) - settings.x_offset, ((cam.ViewportSize.y / 2) - settings.y_offset) + settings.length)
+    end)
+end
+
+--[ AimEnabled = false
+--TriggerbotEnabled = false
+--WalkSpeedEnabled = false
+--JumpPowerEnabled = false
+--getgenv().ChamsEnabled = false
+--getgenv().SkeletonEnabled = false
+--g--etgenv().ESPEnabled = false
+--FOVRainbow = false
+--CrosshairSettings.Rainbow = false
+--FOVProtectionEnabled = true
+
+
 
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
